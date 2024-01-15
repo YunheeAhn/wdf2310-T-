@@ -76,18 +76,19 @@
         <div class="area1"></div>
         <div class="area2">
             <div class="circle-g circle2"></div>
-            <div class="circle-g circle1">box1</div>
+            <div class="circle-g circle1">circle1</div>
         </div>
         <div class="area3"></div>
-        <a href="#" class="btn-top">위로</a>
+        <a href="javascript:void()" class="btn-top">위로</a>
 
         <script>
             gsap.registerPlugin(ScrollTrigger);
 
             const hd = document.querySelector('#header');
+            const topBtn = document.querySelector('.btn-top');
             const btnRightHidden = -250;
 
-            gsap.set('.btn-top', {
+            gsap.set(topBtn, {
                 right: btnRightHidden,
                 opacity: 0,
             });
@@ -110,7 +111,7 @@
                     });
 
                     // srollTop 버튼 보이기
-                    gsap.to('.btn-top', {
+                    gsap.to(topBtn, {
                         right: 50,
                         opacity: 1,
                     });
@@ -123,13 +124,27 @@
                     });
 
                     // srollTop 버튼 숨기기
-                    gsap.to('.btn-top', {
+                    gsap.to(topBtn, {
                         right: btnRightHidden,
                         opacity: 0,
                     });
                 }
             }
 
+            // btnTop 클릭시
+            btnTop.addEventListener('click', function (event) {
+                // 링크 이동 방지
+                // 둘 중 아무거나 사용해도 됨
+                // <a href="javascript:void()">위로</a>
+                event.preventDefault();
+                // 화면을 맨 위로 이동
+                gsap.to(window, {
+                    scrollTo: 0,
+                    duration: 1,
+                });
+            });
+
+            // gsap.to('.circle1', { scrollTrigger: { key: value }, x: 300, duration: 1 });
             gsap.to('.circle1', {
                 scrollTrigger: {
                     trigger: '.area2', // 모션이 어느 지점에서 시작되는지
