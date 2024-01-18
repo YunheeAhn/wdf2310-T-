@@ -50,7 +50,7 @@ console.log(nick, birth); // 겨울 0101
 // 해당 속성이 없는 경우 undefined를 반환한다.
 
 const user1 = null;
-console.log(user1.name); // error
+// console.log(user1.name); // error
 console.log(user1?.name); // undefined
 
 const userWinter = {
@@ -73,3 +73,85 @@ function printCity(user) {
 
 console.log(printCity(userWinter)); // Busan
 console.log(printCity(userFall)); // 주소가 없습니다.
+
+// 객체의 구조분해 할당
+const airbnbIcon = {
+    img: 'airbnb.png',
+    text: '한옥',
+};
+
+const { img, text } = airbnbIcon;
+
+console.log(img, text); // airbnb.png 한옥
+
+// 조건문
+// if문
+// if (조건) {
+//     // 조건이 true일 때 실행되는 코드
+// }
+
+// if else문
+// if (조건) {
+//     // 조건이 true일 때 실행되는 코드
+// } else {
+//     // 조건이 false일 때 실행되는 코드
+// }
+
+// if else if문
+// if (조건) {
+//     // 조건이 true일 때 실행되는 코드
+// } else if (조건) {
+//     // 조건이 true일 때 실행되는 코드
+// } else {
+//     // 조건이 false일 때 실행되는 코드
+// }
+
+// 음수, 양수 판별 함수
+// 함수 선언
+function isPositive(num) {
+    if (num > 0) {
+        console.log(`${num}은/는 양수입니다.`);
+    } else if (num < 0) {
+        console.log(num + '은/는 음수입니다.');
+    } else {
+        console.log(num + '은/는 0입니다.');
+    }
+}
+
+// 함수 실행
+isPositive(1);
+isPositive(-1);
+isPositive(0);
+
+// switch문
+// 매개변수로 입력된 값과 일치하는 case문을 실행한다.
+
+// switch (매개변수) {
+//     case 값1:
+//         // 매개변수 === 값1일 때 실행되는 코드
+//         break;
+//     case 값2:
+//         // 매개변수 === 값2일 때 실행되는 코드
+//         break;
+//     default:
+//     // 매개변수와 일치하는 case문이 없을 때 실행되는 코드
+// }
+
+function getPrice(item) {
+    let price;
+    switch (item) {
+        case '패딩':
+            price = '280,000';
+            break;
+        case '바지':
+            price = '55,000';
+            break;
+        default:
+            price = '아이템 별로 상이함';
+    }
+    return price;
+}
+
+console.log(getPrice('패딩')); // 280,000
+console.log(getPrice('바지')); // 55,000
+console.log(getPrice('모자')); // 아이템 별로 상이함
